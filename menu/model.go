@@ -52,7 +52,6 @@ type Model struct {
 
 // New setups up a new menu model
 func New(title string, choices []Choice, selected *Choice) Model {
-
 	styles := MenuStyles{
 		ListTitleStyle: styles.ListTitleStyle,
 		ListItemStyles: list.NewDefaultItemStyles(),
@@ -129,7 +128,6 @@ func (m Model) SetStyles(s MenuStyles) {
 }
 
 func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
-
 	switch msg := msg.(type) {
 	case tea.WindowSizeMsg:
 		m.SetSize(msg)
@@ -161,6 +159,10 @@ func (m *Model) SetSize(w tea.WindowSizeMsg) {
 
 func (m *Model) SetShowTitle(display bool) {
 	m.list.SetShowTitle(display)
+}
+
+func (m *Model) SetTitle(title string) {
+	m.list.Title = title
 }
 
 func (m *Model) SetShowHelp(display bool) {
